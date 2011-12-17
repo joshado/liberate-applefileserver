@@ -20,7 +20,7 @@ I've been using the excellent [MacZFS](http://code.google.com/p/maczfs/) package
 
 You'll need to compile a .dylib shared library from the c-file, which you can do (if you have the Apple Developer Tools installed) by executing:
 
-    gcc -Wall -undefined dynamic_lookup -o liberate-fileserver.dylib liberate.m
+    gcc -dynamiclib -Wall -undefined dynamic_lookup -o liberate-fileserver.dylib liberate.m
     
 This will kick out a shared library file `liberate-fileserver.dylib` that must be copied into place, pop it into `/usr/local/lib` for now.
 
