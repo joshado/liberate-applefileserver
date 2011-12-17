@@ -24,7 +24,8 @@ You'll need to compile a .dylib shared library from the c-file, which you can do
     
 This will kick out a shared library file `liberate-fileserver.dylib` that must be copied into place, pop it into `/usr/local/lib` for now.
 
-    sudo cp liberate-fileserver.dylib /usr/local/lib
+    sudo mkdir -p /usr/local/lib
+    sudo cp liberate-fileserver.dylib /usr/local/lib/
 
 Now inject this library into the AppleFileServer daemon by adding the following lines to the `/System/Library/LaunchDaemons/com.apple.AppleFileServer.plist` just inside the first `<dict>` tag:
 
