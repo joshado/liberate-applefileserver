@@ -27,13 +27,9 @@ This will kick out a shared library file `liberate-fileserver.dylib` that must b
     sudo mkdir -p /usr/local/lib
     sudo cp liberate-fileserver.dylib /usr/local/lib/
 
-Now inject this library into the AppleFileServer daemon by adding the following lines to the `/System/Library/LaunchDaemons/com.apple.AppleFileServer.plist` just inside the first `<dict>` tag:
+Now inject this library into the AppleFileServer daemon by adding the liberate fileserver library to the dynamic loading path of apples fileserver:
 
-    <key>EnvironmentVariables</key>
-    <dict>    
-        <key>DYLD_INSERT_LIBRARIES</key>
-        <string>/usr/local/lib/liberate-fileserver.dylib</string>
-    </dict>
+    sudo defaults write /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist  EnvironmentVariables -dict DYLD_INSERT_LIBRARIES /usr/local/lib/liberate-fileserver.dylib 
   
 Once you've done this, restart the File Sharing server from within System Preferences, share your filesystem and (hopefully) it should be available to your networked machines.
 
